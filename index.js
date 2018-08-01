@@ -23,14 +23,11 @@ restService.post("/echo", function(req, res) {
   let response = res;
   let responseObj = {
     "fulfillmentText":speech,
-    "fulfillmentMessage":[{"text":{"text":[speech]}}],
+    "fulfillmentMessage":[{"text":{"text"}:speech}],
     "source":""
   }
   return res.json(responseObj);
 });
-
-
-
 
 restService.post("/slack-test", function(req, res) {
   var slack_message = {
