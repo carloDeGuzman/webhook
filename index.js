@@ -20,13 +20,11 @@ restService.post("/echo", function(req, res) {
     req.body.result.parameters.echoText
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
-  let response = res;
-  let responseObj = {
-    "fulfillmentText":speech,
-    "fulfillmentMessage":[{"text":{"text"}:speech}],
-    "source":""
-  }
-  return res.json(responseObj);
+  return res.json({
+    speech: speech,
+    displayText: speech,
+    source: "webhook-echo-sample"
+  });
 });
 
 restService.post("/audio", function(req, res) {
