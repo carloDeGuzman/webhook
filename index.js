@@ -19,7 +19,7 @@ restService.post("/echo", function(req, res) {
     req.body.result.parameters &&
     req.body.result.parameters.echoText
       ? req.body.result.parameters.echoText
-      : "test change";
+      : "test change  " +  req.body.result.parameters.echoText;
   let response = res;
   let responseObj = {
     "fulfillmentText":speech,
