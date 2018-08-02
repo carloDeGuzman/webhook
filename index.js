@@ -14,23 +14,39 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
-  var speech =
-    req.body.queryResult &&
-    req.body.queryResult.parameters &&
-    req.body.queryResult.parameters.echoText
-      ? req.body.queryResult.parameters.echoText
-      : "test change";
-  let response = res;
-  let responseObj = {
-  "fulfillmentText": speech,
-  "fulfillmentMessages": [
-    {
-      "text":{"text":[speech]}
+  if(req.body.queryResult.parameters.actionName == "echo"){
+      var speech =
+        req.body.queryResult &&
+        req.body.queryResult.parameters &&
+        req.body.queryResult.parameters.echoText
+          ? req.body.queryResult.parameters.echoText
+          : "test change";
+      let response = res;
+      let responseObj = {
+      "fulfillmentText": speech,
+      "fulfillmentMessages": [
+        {
+          "text":{"text":[speech]}
+        }
+      ],
+      "source": ""
     }
-  ],
-  "source": ""
-}
-  return res.json(responseObj);
+      return res.json(responseObj);
+    }else if(req.body.queryResult.parameters.actionName == "sounds"){
+        var speech = '<speak><audio src="https://actions.google.com/sounds/v1/cartoon/slide_whistle.ogg">did not get your audio file</audio></speak>';
+        let response = res;
+        let responseObj = {
+        "fulfillmentText": speech,
+        "fulfillmentMessages": [
+          {
+            "text":{"text":[speech]}
+          }
+        ],
+        "source": "https://actions.google.com/sounds/v1/cartoon/slide_whistle.ogg"
+      }
+       return res.json(responseObj);
+    }
+  
 });
 
 restService.post("/audio", function(req, res) {
