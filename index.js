@@ -25,7 +25,7 @@ restService.post("/echo", function(req, res) {
   "fulfillmentText": speech,
   "fulfillmentMessages": [
     {
-      "text":speech
+      "text":{"text":speech}
     }
   ],
   "source": ""
