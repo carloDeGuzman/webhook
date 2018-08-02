@@ -22,13 +22,13 @@ restService.post("/echo", function(req, res) {
       : "test change";
   let response = res;
   let responseObj = {
-  "fulfillmentText": string,
+  "fulfillmentText": speech,
   "fulfillmentMessages": [
     {
       "text":speech
     }
   ],
-  "source": "",
+  "source": ""
 }
   return res.json(responseObj);
 });
